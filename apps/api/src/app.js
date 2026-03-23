@@ -12,15 +12,15 @@ const analyticsRoutes = require('./modules/analytics/analytics.routes');
 
 const app = express();
 
-app.use(helmet());
+// crossOriginResourcePolicy: cross-origin permite que sites externos carreguem o embed.js
+app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 app.use(globalLimiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Widget routes: CORS aberto para qualquer origem + rate limiter específico
+// Widget routes: CORS aberto para qualquer origem + rate limiter no POST de feedbacks
 app.use('/api/widget', cors(widgetCorsOptions), widgetRoutes);
-// Aplica widgetLimiter apenas na rota de submit de feedbacks do widget
-app.use('/api/widget/feedbacks', widgetLimiter);
+app.use('/api/widget/feedbacks', cors(widgetCorsOptions), widgetLimiter);
 
 // Rotas autenticadas: CORS restrito
 app.use(cors(corsOptions));
