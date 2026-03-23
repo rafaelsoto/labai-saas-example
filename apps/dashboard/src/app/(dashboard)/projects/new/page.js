@@ -33,8 +33,9 @@ export default function NewProjectPage() {
     }
   }
 
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3333';
   const snippet = createdProject
-    ? `<script src="http://localhost:3333/api/widget/embed.js"\n  data-api-key="${createdProject.api_key}"\n  defer>\n</script>`
+    ? `<script src="${apiUrl}/api/widget/embed.js"\n  data-api-key="${createdProject.api_key}"\n  defer>\n</script>`
     : '';
 
   const copySnippet = () => {

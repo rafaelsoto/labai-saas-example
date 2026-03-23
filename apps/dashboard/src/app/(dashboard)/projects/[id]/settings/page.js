@@ -56,8 +56,9 @@ export default function ProjectSettingsPage() {
     router.replace('/projects');
   };
 
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3333';
   const snippet = project
-    ? `<script src="http://localhost:3333/api/widget/embed.js"\n  data-api-key="${project.api_key}"\n  defer>\n</script>`
+    ? `<script src="${apiUrl}/api/widget/embed.js"\n  data-api-key="${project.api_key}"\n  defer>\n</script>`
     : '';
 
   if (loading) return <p style={{ color: 'var(--text-muted)' }}>Carregando...</p>;
