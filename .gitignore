@@ -7,3 +7,4 @@ node_modules/
 
 # Widget dist is committed so the API can serve it without a build step
 !apps/widget/dist/
+.claude/
