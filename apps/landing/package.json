@@ -1,0 +1,10 @@
+{
+  "name": "@feedbackflow/landing",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "serve public -p ${PORT:-3000} -s"
+  },
+  "dependencies": {
+    "serve": "^14.2.3"
+  }
+}
