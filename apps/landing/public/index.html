@@ -8,6 +8,23 @@
     <meta name="description"
         content="Restaurante premium de culinária japonesa. Experiência imersiva com sushis, sashimis e pratos quentes.">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23050505'/><text x='5' y='23' font-family='Georgia,serif' font-size='17' font-weight='700' fill='%23dc2626'>S</text><text x='17' y='23' font-family='Georgia,serif' font-size='13' font-weight='700' fill='%23d4af37'>K</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='36' fill='%23050505'/><text x='28' y='132' font-family='Georgia,serif' font-size='100' font-weight='700' fill='%23dc2626'>S</text><text x='98' y='132' font-family='Georgia,serif' font-size='76' font-weight='700' fill='%23d4af37'>K</text></svg>">
+
+    <!-- Open Graph / Social Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sushi Kawa | Tradição Japonesa, Sabor Autêntico">
+    <meta property="og:description" content="Restaurante premium de culinária japonesa em São Paulo. Experiência imersiva com sushis, sashimis e pratos quentes. Omakase, balcão Hinoki e salas Tatami privativas.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1200&h=630&q=85">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Sushi Kawa — A Arte do Sushi">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sushi Kawa | Tradição Japonesa, Sabor Autêntico">
+    <meta name="twitter:description" content="Restaurante premium de culinária japonesa em São Paulo.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1200&h=630&q=85">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -62,24 +79,163 @@
             margin: 0 1rem;
             position: relative;
             top: -6px;
+            transition: border-color 0.3s ease;
         }
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #dc2626; }
+
+        /* ─── Micro-interactions ─────────────────────────── */
+
+        /* Nav shrink on scroll */
+        header {
+            transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        header.scrolled {
+            background-color: rgba(5, 5, 5, 0.98);
+            border-bottom-color: rgba(220, 38, 38, 0.18);
+            box-shadow: 0 2px 40px rgba(0, 0, 0, 0.6);
+        }
+        .nav-inner {
+            transition: height 0.4s ease;
         }
 
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a;
+        /* Hero entrance animations */
+        @keyframes heroFadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .hero-anim   { animation: heroFadeUp 1s cubic-bezier(.22,.68,0,1.2) both; }
+        .hero-delay1 { animation-delay: 0.15s; }
+        .hero-delay2 { animation-delay: 0.35s; }
+        .hero-delay3 { animation-delay: 0.55s; }
+        .hero-delay4 { animation-delay: 0.75s; }
+
+        /* Scroll-reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-32px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(32px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-d1 { transition-delay: 0.10s; }
+        .reveal-d2 { transition-delay: 0.20s; }
+        .reveal-d3 { transition-delay: 0.30s; }
+        .reveal-d4 { transition-delay: 0.40s; }
+
+        /* Button shimmer */
+        .shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.14) 50%, transparent 60%);
+            transform: translateX(-100%);
+            transition: transform 0s;
+        }
+        .shimmer:hover::after {
+            transform: translateX(100%);
+            transition: transform 0.55s ease;
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: #1f2937;
-            border-radius: 4px;
+        /* Menu item price glow on hover */
+        .group:hover .price-glow {
+            text-shadow: 0 0 14px rgba(212, 175, 55, 0.55);
+            transition: text-shadow 0.3s ease;
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: #dc2626;
+        /* Section gold divider line grow */
+        .divider-line {
+            width: 0;
+            transition: width 0.7s ease;
+        }
+        .divider-line.visible {
+            width: 3rem;
+        }
+
+        /* Image hover lift */
+        .img-hover {
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        .img-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        /* Review card subtle glow on hover */
+        .review-card {
+            transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+        .review-card:hover {
+            box-shadow: 0 0 30px rgba(220, 38, 38, 0.08);
+        }
+
+        /* Gold link underline slide */
+        .gold-link {
+            position: relative;
+        }
+        .gold-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px; left: 0;
+            width: 0; height: 1px;
+            background: #d4af37;
+            transition: width 0.3s ease;
+        }
+        .gold-link:hover::after { width: 100%; }
+
+        /* Form input focus glow */
+        input:focus, select:focus {
+            box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2);
+        }
+
+        /* Stars shimmer on card hover */
+        .review-card:hover .stars {
+            animation: starPulse 0.6s ease;
+        }
+        @keyframes starPulse {
+            0%   { letter-spacing: 0; }
+            50%  { letter-spacing: 2px; color: #f5c842; }
+            100% { letter-spacing: 0; }
+        }
+
+        /* Floating scroll indicator */
+        @keyframes floatDown {
+            0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.7; }
+            50%       { transform: translateX(-50%) translateY(10px); opacity: 1; }
+        }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 48px;
+            left: 50%;
+            animation: floatDown 2.2s ease-in-out infinite;
         }
     </style>
 </head>
@@ -88,28 +244,27 @@
 
     <!-- Navigation -->
     <header
-        class="fixed w-full z-50 bg-brand-darker/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        class="fixed w-full z-50 bg-brand-darker/90 backdrop-blur-md border-b border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-24">
+            <div class="nav-inner flex justify-between items-center h-24">
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="#" class="font-serif text-2xl tracking-[0.2em] text-white">
+                    <a href="#" class="font-serif text-2xl tracking-[0.2em] text-white hover:text-gray-200 transition-colors">
                         SUSHI<span class="text-brand-red">KAWA</span>
                     </a>
                 </div>
                 <nav class="hidden md:flex space-x-10">
                     <a href="#menu"
-                        class="text-sm uppercase tracking-widest text-gray-300 hover:text-brand-gold transition-colors">Cardápio</a>
+                        class="gold-link text-sm uppercase tracking-widest text-gray-300 hover:text-brand-gold transition-colors">Cardápio</a>
                     <a href="#space"
-                        class="text-sm uppercase tracking-widest text-gray-300 hover:text-brand-gold transition-colors">O
-                        Espaço</a>
+                        class="gold-link text-sm uppercase tracking-widest text-gray-300 hover:text-brand-gold transition-colors">O Espaço</a>
                     <a href="#reviews"
-                        class="text-sm uppercase tracking-widest text-gray-300 hover:text-brand-gold transition-colors">Experiência</a>
+                        class="gold-link text-sm uppercase tracking-widest text-gray-300 hover:text-brand-gold transition-colors">Experiência</a>
                     <a href="#info"
-                        class="text-sm uppercase tracking-widest text-gray-300 hover:text-brand-gold transition-colors">Info</a>
+                        class="gold-link text-sm uppercase tracking-widest text-gray-300 hover:text-brand-gold transition-colors">Info</a>
                 </nav>
                 <div class="hidden md:flex">
                     <a href="#info"
-                        class="bg-transparent border border-brand-red text-brand-red hover:bg-brand-red hover:text-white px-6 py-2 rounded-sm text-sm uppercase tracking-widest transition-all duration-300">
+                        class="shimmer bg-transparent border border-brand-red text-brand-red hover:bg-brand-red hover:text-white px-6 py-2 rounded-sm text-sm uppercase tracking-widest transition-all duration-300">
                         Reserva
                     </a>
                 </div>
@@ -120,48 +275,45 @@
     <!-- Hero Section -->
     <section class="relative h-screen flex items-center justify-center hero-bg">
         <div class="text-center px-4 max-w-4xl mx-auto z-10 pt-20">
-            <span class="text-brand-gold font-serif italic text-xl md:text-2xl mb-6 block tracking-wider">Desde
-                1998</span>
-            <h1
-                class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-6 tracking-tight drop-shadow-lg">
+            <span class="hero-anim text-brand-gold font-serif italic text-xl md:text-2xl mb-6 block tracking-wider">Desde 1998</span>
+            <h1 class="hero-anim hero-delay1 text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-6 tracking-tight drop-shadow-lg">
                 A Arte do <span class="text-brand-red">Sushi</span>
             </h1>
-            <p
-                class="text-lg md:text-xl text-gray-300 mb-12 font-light max-w-2xl mx-auto tracking-wide leading-relaxed">
+            <p class="hero-anim hero-delay2 text-lg md:text-xl text-gray-300 mb-12 font-light max-w-2xl mx-auto tracking-wide leading-relaxed">
                 Tradição japonesa, sabor autêntico. Uma imersão gastronômica no coração de São Paulo, onde cada detalhe
                 importa.
             </p>
-            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+            <div class="hero-anim hero-delay3 flex flex-col sm:flex-row gap-6 justify-center">
                 <a href="#info"
-                    class="bg-brand-red hover:bg-red-700 text-white px-8 py-4 rounded-sm transition-all tracking-[0.2em] text-sm uppercase shadow-[0_0_20px_rgba(220,38,38,0.3)]">
+                    class="shimmer bg-brand-red hover:bg-red-700 text-white px-8 py-4 rounded-sm transition-all tracking-[0.2em] text-sm uppercase shadow-[0_0_20px_rgba(220,38,38,0.3)]">
                     Reserve sua mesa
                 </a>
                 <a href="#menu"
-                    class="bg-black/50 backdrop-blur-sm border border-white/20 hover:border-brand-gold hover:text-brand-gold text-white px-8 py-4 rounded-sm transition-all tracking-[0.2em] text-sm uppercase">
+                    class="shimmer bg-black/50 backdrop-blur-sm border border-white/20 hover:border-brand-gold hover:text-brand-gold text-white px-8 py-4 rounded-sm transition-all tracking-[0.2em] text-sm uppercase">
                     Descobrir Menu
                 </a>
             </div>
         </div>
 
         <!-- Scroll Indicator -->
-        <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <div class="w-[1px] h-16 bg-gradient-to-b from-brand-gold to-transparent"></div>
+        <div class="scroll-indicator">
+            <div class="w-[1px] h-16 bg-gradient-to-b from-brand-gold to-transparent mx-auto"></div>
         </div>
     </section>
 
     <!-- Menu Section -->
     <section id="menu" class="py-32 bg-brand-dark">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20">
+            <div class="text-center mb-20 reveal">
                 <h2 class="text-brand-red font-sans uppercase tracking-[0.3em] text-sm mb-4">Nossa Essência</h2>
                 <h3 class="text-4xl md:text-5xl font-serif text-white">Cardápio</h3>
-                <div class="w-12 h-1 bg-brand-gold mx-auto mt-8"></div>
+                <div class="divider-line h-1 bg-brand-gold mx-auto mt-8"></div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-20 gap-y-16">
 
                 <!-- Sushis -->
-                <div class="space-y-8">
+                <div class="space-y-8 reveal reveal-d1">
                     <h4
                         class="text-2xl font-serif text-brand-gold mb-8 pb-4 border-b border-white/10 flex items-end justify-between">
                         Sushis <span class="text-xs font-sans text-gray-400 tracking-[0.2em] uppercase">Signature</span>
@@ -169,10 +321,10 @@
 
                     <div class="group cursor-default">
                         <div class="flex items-baseline justify-between mb-1">
-                            <h5 class="text-lg text-white font-medium group-hover:text-brand-red transition-colors">
+                            <h5 class="text-lg text-white font-medium group-hover:text-brand-red transition-colors duration-300">
                                 Nigiri Toro Trufado</h5>
-                            <div class="menu-dots group-hover:border-brand-red/50 transition-colors"></div>
-                            <span class="text-brand-gold font-serif text-lg">R$ 54</span>
+                            <div class="menu-dots group-hover:border-brand-red/50"></div>
+                            <span class="price-glow text-brand-gold font-serif text-lg transition-all duration-300">R$ 54</span>
                         </div>
                         <p class="text-sm text-gray-400 font-light pr-12">Atum bluefin gordo, azeite de trufas brancas,
                             flor de sal, raspas de limão siciliano.</p>
@@ -180,10 +332,9 @@
 
                     <div class="group cursor-default">
                         <div class="flex items-baseline justify-between mb-1">
-                            <h5 class="text-lg text-white font-medium group-hover:text-brand-red transition-colors">Ebi
-                                Spicy Roll</h5>
-                            <div class="menu-dots group-hover:border-brand-red/50 transition-colors"></div>
-                            <span class="text-brand-gold font-serif text-lg">R$ 48</span>
+                            <h5 class="text-lg text-white font-medium group-hover:text-brand-red transition-colors duration-300">Ebi Spicy Roll</h5>
+                            <div class="menu-dots group-hover:border-brand-red/50"></div>
+                            <span class="price-glow text-brand-gold font-serif text-lg transition-all duration-300">R$ 48</span>
                         </div>
                         <p class="text-sm text-gray-400 font-light pr-12">Camarão empanado, abacate, maionese spicy da
                             casa, ovas de capelin.</p>
@@ -191,11 +342,10 @@
 
                     <div class="group cursor-default">
                         <div class="flex items-baseline justify-between mb-1">
-                            <h5 class="text-lg text-white font-medium group-hover:text-brand-red transition-colors">Kawa
-                                Omakase <span class="text-xs text-brand-red ml-2 border border-brand-red px-1">12
-                                    un</span></h5>
-                            <div class="menu-dots group-hover:border-brand-red/50 transition-colors"></div>
-                            <span class="text-brand-gold font-serif text-lg">R$ 145</span>
+                            <h5 class="text-lg text-white font-medium group-hover:text-brand-red transition-colors duration-300">Kawa
+                                Omakase <span class="text-xs text-brand-red ml-2 border border-brand-red px-1">12 un</span></h5>
+                            <div class="menu-dots group-hover:border-brand-red/50"></div>
+                            <span class="price-glow text-brand-gold font-serif text-lg transition-all duration-300">R$ 145</span>
                         </div>
                         <p class="text-sm text-gray-400 font-light pr-12">Seleção exclusiva do Itamae com os cortes mais
                             frescos do dia.</p>
@@ -203,7 +353,7 @@
                 </div>
 
                 <!-- Sashimis & Temakis -->
-                <div class="space-y-8">
+                <div class="space-y-8 reveal reveal-d2">
                     <h4
                         class="text-2xl font-serif text-brand-gold mb-8 pb-4 border-b border-white/10 flex items-end justify-between">
                         Sashimis & Temakis <span
@@ -212,10 +362,10 @@
 
                     <div class="group cursor-default">
                         <div class="flex items-baseline justify-between mb-1">
-                            <h5 class="text-lg text-white font-medium group-hover:text-brand-red transition-colors">
+                            <h5 class="text-lg text-white font-medium group-hover:text-brand-red transition-colors duration-300">
                                 Sashimi Shake Premium</h5>
-                            <div class="menu-dots group-hover:border-brand-red/50 transition-colors"></div>
-                            <span class="text-brand-gold font-serif text-lg">R$ 65</span>
+                            <div class="menu-dots group-hover:border-brand-red/50"></div>
+                            <span class="price-glow text-brand-gold font-serif text-lg transition-all duration-300">R$ 65</span>
                         </div>
                         <p class="text-sm text-gray-400 font-light pr-12">10 fatias generosas de salmão escocês, corte
                             nobre das costas e barriga.</p>
@@ -223,10 +373,10 @@
 
                     <div class="group cursor-default">
                         <div class="flex items-baseline justify-between mb-1">
-                            <h5 class="text-lg text-white font-medium group-hover:text-brand-red transition-colors">
+                            <h5 class="text-lg text-white font-medium group-hover:text-brand-red transition-colors duration-300">
                                 Carpaccio de Polvo</h5>
-                            <div class="menu-dots group-hover:border-brand-red/50 transition-colors"></div>
-                            <span class="text-brand-gold font-serif text-lg">R$ 72</span>
+                            <div class="menu-dots group-hover:border-brand-red/50"></div>
+                            <span class="price-glow text-brand-gold font-serif text-lg transition-all duration-300">R$ 72</span>
                         </div>
                         <p class="text-sm text-gray-400 font-light pr-12">Lâminas finíssimas de polvo, azeite extra
                             virgem, limão yuzu e flor de sal.</p>
@@ -234,10 +384,10 @@
 
                     <div class="group cursor-default">
                         <div class="flex items-baseline justify-between mb-1">
-                            <h5 class="text-lg text-white font-medium group-hover:text-brand-red transition-colors">
+                            <h5 class="text-lg text-white font-medium group-hover:text-brand-red transition-colors duration-300">
                                 Temaki Atum Spicy Cruncy</h5>
-                            <div class="menu-dots group-hover:border-brand-red/50 transition-colors"></div>
-                            <span class="text-brand-gold font-serif text-lg">R$ 42</span>
+                            <div class="menu-dots group-hover:border-brand-red/50"></div>
+                            <span class="price-glow text-brand-gold font-serif text-lg transition-all duration-300">R$ 42</span>
                         </div>
                         <p class="text-sm text-gray-400 font-light pr-12">Atum picado com molho apimentado, cebolinha,
                             gergelim e flocos de tempurá.</p>
@@ -245,7 +395,7 @@
                 </div>
 
                 <!-- Pratos Quentes -->
-                <div class="space-y-8">
+                <div class="space-y-8 reveal reveal-d1">
                     <h4
                         class="text-2xl font-serif text-brand-gold mb-8 pb-4 border-b border-white/10 flex items-end justify-between">
                         Pratos Quentes <span
@@ -254,10 +404,10 @@
 
                     <div class="group cursor-default">
                         <div class="flex items-baseline justify-between mb-1">
-                            <h5 class="text-lg text-white font-medium group-hover:text-brand-red transition-colors">
+                            <h5 class="text-lg text-white font-medium group-hover:text-brand-red transition-colors duration-300">
                                 Black Cod Miso</h5>
-                            <div class="menu-dots group-hover:border-brand-red/50 transition-colors"></div>
-                            <span class="text-brand-gold font-serif text-lg">R$ 135</span>
+                            <div class="menu-dots group-hover:border-brand-red/50"></div>
+                            <span class="price-glow text-brand-gold font-serif text-lg transition-all duration-300">R$ 135</span>
                         </div>
                         <p class="text-sm text-gray-400 font-light pr-12">Peixe prego especial do Alasca, marinado por
                             48h no missô doce e grelhado.</p>
@@ -265,10 +415,10 @@
 
                     <div class="group cursor-default">
                         <div class="flex items-baseline justify-between mb-1">
-                            <h5 class="text-lg text-white font-medium group-hover:text-brand-red transition-colors">
+                            <h5 class="text-lg text-white font-medium group-hover:text-brand-red transition-colors duration-300">
                                 Wagyu A5 Ishiyaki</h5>
-                            <div class="menu-dots group-hover:border-brand-red/50 transition-colors"></div>
-                            <span class="text-brand-gold font-serif text-lg">R$ 290</span>
+                            <div class="menu-dots group-hover:border-brand-red/50"></div>
+                            <span class="price-glow text-brand-gold font-serif text-lg transition-all duration-300">R$ 290</span>
                         </div>
                         <p class="text-sm text-gray-400 font-light pr-12">Fatias de Wagyu japonês grau A5 servidas para
                             grelhar na pedra de sal rosa.</p>
@@ -276,7 +426,7 @@
                 </div>
 
                 <!-- Sobremesas -->
-                <div class="space-y-8">
+                <div class="space-y-8 reveal reveal-d2">
                     <h4
                         class="text-2xl font-serif text-brand-gold mb-8 pb-4 border-b border-white/10 flex items-end justify-between">
                         Sobremesas <span class="text-xs font-sans text-gray-400 tracking-[0.2em] uppercase">Doces</span>
@@ -284,10 +434,10 @@
 
                     <div class="group cursor-default">
                         <div class="flex items-baseline justify-between mb-1">
-                            <h5 class="text-lg text-white font-medium group-hover:text-brand-red transition-colors">
+                            <h5 class="text-lg text-white font-medium group-hover:text-brand-red transition-colors duration-300">
                                 Matcha Cheesecake</h5>
-                            <div class="menu-dots group-hover:border-brand-red/50 transition-colors"></div>
-                            <span class="text-brand-gold font-serif text-lg">R$ 38</span>
+                            <div class="menu-dots group-hover:border-brand-red/50"></div>
+                            <span class="price-glow text-brand-gold font-serif text-lg transition-all duration-300">R$ 38</span>
                         </div>
                         <p class="text-sm text-gray-400 font-light pr-12">Cheesecake desconstruída, terra de cacau,
                             sorvete de matchá artesanal.</p>
@@ -295,10 +445,10 @@
 
                     <div class="group cursor-default">
                         <div class="flex items-baseline justify-between mb-1">
-                            <h5 class="text-lg text-white font-medium group-hover:text-brand-red transition-colors">
+                            <h5 class="text-lg text-white font-medium group-hover:text-brand-red transition-colors duration-300">
                                 Mochi Ice Cream Trio</h5>
-                            <div class="menu-dots group-hover:border-brand-red/50 transition-colors"></div>
-                            <span class="text-brand-gold font-serif text-lg">R$ 32</span>
+                            <div class="menu-dots group-hover:border-brand-red/50"></div>
+                            <span class="price-glow text-brand-gold font-serif text-lg transition-all duration-300">R$ 32</span>
                         </div>
                         <p class="text-sm text-gray-400 font-light pr-12">Massa fina de arroz recheada com sorvetes de
                             lichia, gergelim negro e yuzu.</p>
@@ -313,27 +463,23 @@
     <section id="space" class="py-32 bg-brand-darker relative border-y border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="order-2 lg:order-1 grid grid-cols-2 gap-4">
-                    <!-- Image Placeholders -->
-                    <div
-                        class="h-64 bg-brand-gray/30 rounded-sm border border-white/5 flex items-center justify-center overflow-hidden relative group">
-                        <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-all z-10"></div>
+                <div class="order-2 lg:order-1 grid grid-cols-2 gap-4 reveal-left">
+                    <div class="img-hover h-64 bg-brand-gray/30 rounded-sm border border-white/5 overflow-hidden relative group">
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-all duration-500 z-10"></div>
                         <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                             alt="Balcão do Sushi"
                             class="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700">
                     </div>
-                    <div
-                        class="h-64 bg-brand-gray/30 rounded-sm border border-white/5 flex items-center justify-center overflow-hidden relative group mt-12">
-                        <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-all z-10"></div>
+                    <div class="img-hover h-64 bg-brand-gray/30 rounded-sm border border-white/5 overflow-hidden relative group mt-12">
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-all duration-500 z-10"></div>
                         <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                             alt="Salão"
                             class="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700">
                     </div>
                 </div>
 
-                <div class="order-1 lg:order-2">
-                    <h2 class="text-brand-red font-sans uppercase tracking-[0.3em] text-sm mb-4">Arquitetura Sensorial
-                    </h2>
+                <div class="order-1 lg:order-2 reveal-right">
+                    <h2 class="text-brand-red font-sans uppercase tracking-[0.3em] text-sm mb-4">Arquitetura Sensorial</h2>
                     <h3 class="text-4xl md:text-5xl font-serif text-white mb-8">O Nosso Espaço</h3>
 
                     <p class="text-gray-400 font-light leading-relaxed mb-6">
@@ -348,9 +494,9 @@
                     </p>
 
                     <a href="#info"
-                        class="inline-flex items-center text-brand-gold hover:text-white transition-colors tracking-widest text-sm uppercase">
+                        class="gold-link inline-flex items-center text-brand-gold hover:text-white transition-colors tracking-widest text-sm uppercase">
                         Reservar Sala Privativa
-                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                         </svg>
@@ -363,25 +509,22 @@
     <!-- Avaliações -->
     <section id="reviews" class="py-32 bg-brand-dark">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20">
+            <div class="text-center mb-20 reveal">
                 <h2 class="text-brand-red font-sans uppercase tracking-[0.3em] text-sm mb-4">Excelência Reconhecida</h2>
                 <h3 class="text-4xl md:text-5xl font-serif text-white">Últimas Avaliações</h3>
-                <div class="w-12 h-1 bg-brand-gold mx-auto mt-8"></div>
+                <div class="divider-line h-1 bg-brand-gold mx-auto mt-8"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Review 1 -->
-                <div
-                    class="bg-brand-darker border border-white/5 p-8 rounded-sm hover:-translate-y-2 hover:border-brand-red/30 transition-all duration-300">
-                    <div class="text-brand-gold text-lg mb-4">★★★★★</div>
+                <div class="review-card reveal reveal-d1 bg-brand-darker border border-white/5 p-8 rounded-sm hover:-translate-y-2 hover:border-brand-red/30">
+                    <div class="stars text-brand-gold text-lg mb-4">★★★★★</div>
                     <p class="text-gray-400 font-light italic mb-8 leading-relaxed">
                         "O melhor restaurante japonês da cidade, sem sombra de dúvidas. A seleção de peixes é impecável.
                         O Wagyu na pedra é uma experiência divina."
                     </p>
                     <div class="flex items-center">
-                        <div
-                            class="w-10 h-10 rounded-full border border-brand-gold flex items-center justify-center text-brand-gold font-serif mr-4">
-                            A</div>
+                        <div class="w-10 h-10 rounded-full border border-brand-gold flex items-center justify-center text-brand-gold font-serif mr-4 transition-colors duration-300 group-hover:bg-brand-gold group-hover:text-black">A</div>
                         <div>
                             <h4 class="text-white text-sm font-medium">Arthur V.</h4>
                             <p class="text-gray-500 text-xs">Jantar Executivo</p>
@@ -389,18 +532,15 @@
                     </div>
                 </div>
 
-                <!-- Review 2 -->
-                <div
-                    class="bg-brand-darker border border-brand-gold/20 p-8 rounded-sm hover:-translate-y-2 hover:border-brand-gold transition-all duration-300 transform md:-translate-y-4">
-                    <div class="text-brand-gold text-lg mb-4">★★★★★</div>
+                <!-- Review 2 (featured) -->
+                <div class="review-card reveal reveal-d2 bg-brand-darker border border-brand-gold/20 p-8 rounded-sm hover:-translate-y-2 hover:border-brand-gold transform md:-translate-y-4">
+                    <div class="stars text-brand-gold text-lg mb-4">★★★★★</div>
                     <p class="text-gray-400 font-light italic mb-8 leading-relaxed">
                         "Fui pelo menu degustação (Omakase). Sentei ao balcão e cada peça que o Chef preparava era uma
                         obra de arte. A textura do polvo e do Toro... inesquecíveis!"
                     </p>
                     <div class="flex items-center">
-                        <div
-                            class="w-10 h-10 rounded-full border border-brand-gold flex items-center justify-center text-brand-gold font-serif mr-4">
-                            M</div>
+                        <div class="w-10 h-10 rounded-full border border-brand-gold flex items-center justify-center text-brand-gold font-serif mr-4">M</div>
                         <div>
                             <h4 class="text-white text-sm font-medium">Mariana L.</h4>
                             <p class="text-gray-500 text-xs">Experiência Omakase</p>
@@ -409,17 +549,14 @@
                 </div>
 
                 <!-- Review 3 -->
-                <div
-                    class="bg-brand-darker border border-white/5 p-8 rounded-sm hover:-translate-y-2 hover:border-brand-red/30 transition-all duration-300">
-                    <div class="text-brand-gold text-lg mb-4">★★★★★</div>
+                <div class="review-card reveal reveal-d3 bg-brand-darker border border-white/5 p-8 rounded-sm hover:-translate-y-2 hover:border-brand-red/30">
+                    <div class="stars text-brand-gold text-lg mb-4">★★★★★</div>
                     <p class="text-gray-400 font-light italic mb-8 leading-relaxed">
                         "Ambiente espetacular e serviço primoroso. O Black Cod estava desmanchando na boca. A carta de
                         saquês acompanhou perfeitamente os pratos."
                     </p>
                     <div class="flex items-center">
-                        <div
-                            class="w-10 h-10 rounded-full border border-brand-gold flex items-center justify-center text-brand-gold font-serif mr-4">
-                            G</div>
+                        <div class="w-10 h-10 rounded-full border border-brand-gold flex items-center justify-center text-brand-gold font-serif mr-4">G</div>
                         <div>
                             <h4 class="text-white text-sm font-medium">Gabriel C.</h4>
                             <p class="text-gray-500 text-xs">Jantar de Aniversário</p>
@@ -432,14 +569,10 @@
 
     <!-- Info & Booking -->
     <section id="info" class="py-32 bg-brand-darker relative overflow-hidden border-t border-white/5">
-        <!-- Abstract red shape in background -->
-        <div
-            class="absolute -top-[20%] -right-[10%] w-[50vw] h-[50vw] bg-brand-red/5 rounded-full blur-3xl pointer-events-none">
-        </div>
+        <div class="absolute -top-[20%] -right-[10%] w-[50vw] h-[50vw] bg-brand-red/5 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div
-                class="grid grid-cols-1 lg:grid-cols-12 gap-12 bg-black/60 backdrop-blur-md border border-white/10 p-8 md:p-12 rounded-sm shadow-2xl">
+            <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-12 bg-black/60 backdrop-blur-md border border-white/10 p-8 md:p-12 rounded-sm shadow-2xl">
 
                 <div class="lg:col-span-5">
                     <h3 class="text-3xl font-serif text-white mb-8 border-b border-brand-red/30 pb-4 inline-block">
@@ -448,12 +581,9 @@
                     <div class="space-y-6 mb-8">
                         <div>
                             <h4 class="text-brand-gold font-serif text-lg mb-2">Funcionamento</h4>
-                            <p class="text-gray-400 font-light text-sm"><strong class="text-gray-300 font-medium">Ter a
-                                    Qui:</strong> 19h às 23h30</p>
-                            <p class="text-gray-400 font-light text-sm"><strong class="text-gray-300 font-medium">Sex e
-                                    Sáb:</strong> 19h às 00h30</p>
-                            <p class="text-gray-400 font-light text-sm"><strong class="text-gray-300 font-medium">Dom e
-                                    Seg:</strong> <span class="text-brand-red">Fechado</span></p>
+                            <p class="text-gray-400 font-light text-sm"><strong class="text-gray-300 font-medium">Ter a Qui:</strong> 19h às 23h30</p>
+                            <p class="text-gray-400 font-light text-sm"><strong class="text-gray-300 font-medium">Sex e Sáb:</strong> 19h às 00h30</p>
+                            <p class="text-gray-400 font-light text-sm"><strong class="text-gray-300 font-medium">Dom e Seg:</strong> <span class="text-brand-red">Fechado</span></p>
                         </div>
 
                         <div>
@@ -480,14 +610,13 @@
                             <div>
                                 <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Nome</label>
                                 <input type="text"
-                                    class="w-full bg-brand-dark border border-white/10 rounded-sm p-3 text-white focus:outline-none focus:border-brand-red transition-colors"
+                                    class="w-full bg-brand-dark border border-white/10 rounded-sm p-3 text-white focus:outline-none focus:border-brand-red transition-all duration-300"
                                     placeholder="Seu nome completo">
                             </div>
                             <div>
-                                <label
-                                    class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Telefone</label>
+                                <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Telefone</label>
                                 <input type="tel"
-                                    class="w-full bg-brand-dark border border-white/10 rounded-sm p-3 text-white focus:outline-none focus:border-brand-red transition-colors"
+                                    class="w-full bg-brand-dark border border-white/10 rounded-sm p-3 text-white focus:outline-none focus:border-brand-red transition-all duration-300"
                                     placeholder="(11) 90000-0000">
                             </div>
                         </div>
@@ -496,14 +625,12 @@
                             <div>
                                 <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Data</label>
                                 <input type="date"
-                                    class="w-full bg-brand-dark border border-white/10 rounded-sm p-3 text-white focus:outline-none focus:border-brand-red transition-colors"
+                                    class="w-full bg-brand-dark border border-white/10 rounded-sm p-3 text-white focus:outline-none focus:border-brand-red transition-all duration-300"
                                     style="color-scheme: dark;">
                             </div>
                             <div>
-                                <label
-                                    class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Horário</label>
-                                <select
-                                    class="w-full bg-brand-dark border border-white/10 rounded-sm p-3 text-white focus:outline-none focus:border-brand-red transition-colors appearance-none">
+                                <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Horário</label>
+                                <select class="w-full bg-brand-dark border border-white/10 rounded-sm p-3 text-white focus:outline-none focus:border-brand-red transition-all duration-300 appearance-none">
                                     <option>19:00</option>
                                     <option>19:30</option>
                                     <option>20:00</option>
@@ -513,10 +640,8 @@
                                 </select>
                             </div>
                             <div>
-                                <label
-                                    class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Pessoas</label>
-                                <select
-                                    class="w-full bg-brand-dark border border-white/10 rounded-sm p-3 text-white focus:outline-none focus:border-brand-red transition-colors appearance-none">
+                                <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Pessoas</label>
+                                <select class="w-full bg-brand-dark border border-white/10 rounded-sm p-3 text-white focus:outline-none focus:border-brand-red transition-all duration-300 appearance-none">
                                     <option>2 Pessoas</option>
                                     <option>3 Pessoas</option>
                                     <option>4 Pessoas</option>
@@ -528,7 +653,7 @@
 
                         <div class="pt-4">
                             <button type="button"
-                                class="w-full bg-brand-red hover:bg-red-700 text-white rounded-sm p-4 text-sm uppercase tracking-[0.2em] transition-colors font-medium">
+                                class="shimmer w-full bg-brand-red hover:bg-red-700 text-white rounded-sm p-4 text-sm uppercase tracking-[0.2em] transition-colors duration-300 font-medium">
                                 Solicitar Reserva
                             </button>
                             <p class="text-center text-xs text-gray-500 mt-4">*Sua reserva estará confirmada após o
@@ -553,7 +678,7 @@
             <div class="flex space-x-6 mb-12">
                 <!-- Instagram -->
                 <a href="#"
-                    class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-gray-400 hover:text-white hover:border-brand-red hover:bg-brand-red/10 transition-all">
+                    class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-gray-400 hover:text-white hover:border-brand-red hover:bg-brand-red/10 transition-all duration-300">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path fill-rule="evenodd"
                             d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
@@ -563,7 +688,7 @@
 
                 <!-- Facebook -->
                 <a href="#"
-                    class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-gray-400 hover:text-white hover:border-brand-red hover:bg-brand-red/10 transition-all">
+                    class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-gray-400 hover:text-white hover:border-brand-red hover:bg-brand-red/10 transition-all duration-300">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path fill-rule="evenodd"
                             d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
@@ -571,13 +696,12 @@
                     </svg>
                 </a>
 
-                <!-- Tripadvisor/Map -->
+                <!-- Location -->
                 <a href="#"
-                    class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-gray-400 hover:text-white hover:border-brand-red hover:bg-brand-red/10 transition-all">
+                    class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-gray-400 hover:text-white hover:border-brand-red hover:bg-brand-red/10 transition-all duration-300">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
-                        </path>
+                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                     </svg>
@@ -595,12 +719,79 @@
         </div>
     </footer>
 
+    <!-- Micro-interactions Script -->
+    <script>
+        (function () {
+            // ── Nav shrink on scroll ─────────────────────────
+            var header = document.querySelector('header');
+            var navInner = header.querySelector('.nav-inner');
+            navInner.style.transition = 'height 0.4s ease';
+
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 80) {
+                    header.classList.add('scrolled');
+                    navInner.style.height = '4rem';
+                } else {
+                    header.classList.remove('scrolled');
+                    navInner.style.height = '6rem';
+                }
+            }, { passive: true });
+
+            // ── Scroll-reveal (IntersectionObserver) ─────────
+            var revealObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function (el) {
+                revealObserver.observe(el);
+            });
+
+            // ── Gold divider line grow ────────────────────────
+            var dividerObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        dividerObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('.divider-line').forEach(function (el) {
+                dividerObserver.observe(el);
+            });
+
+            // ── Smooth active nav link highlight ─────────────
+            var sections = document.querySelectorAll('section[id]');
+            var navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+            var sectionObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(function (link) {
+                            link.classList.remove('text-brand-gold');
+                            link.classList.add('text-gray-300');
+                            if (link.getAttribute('href') === '#' + entry.target.id) {
+                                link.classList.remove('text-gray-300');
+                                link.classList.add('text-brand-gold');
+                            }
+                        });
+                    }
+                });
+            }, { threshold: 0.4 });
+
+            sections.forEach(function (s) { sectionObserver.observe(s); });
+        })();
+    </script>
+
     <!-- Widget FeedbackFlow -->
-    <!-- Script added directly before closing body tag as requested -->
-    <!-- Added data-color="#dc2626" to override color per requirement that the widget appear in red -->
     <script src="https://api-production-b01f.up.railway.app/api/widget/embed.js"
         data-api-key="ff_proj_f36c8d5ace1e1f94951a27c8b3de0446" defer>
-        </script>
+    </script>
 </body>
 
 </html>
