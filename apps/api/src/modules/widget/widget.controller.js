@@ -23,7 +23,7 @@ async function createFeedback(req, res, next) {
 
 async function serveEmbed(req, res) {
   // Arquivo copiado para dentro da API para funcionar em qualquer ambiente de deploy
-  const embedPath = path.resolve(__dirname, '../../../../public/embed.js');
+  const embedPath = path.resolve(__dirname, '../../../public/embed.js');
 
   // Permite que qualquer site externo carregue o script
   res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
