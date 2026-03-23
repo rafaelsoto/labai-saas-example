@@ -1,0 +1,94 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.colorDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 600;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.url {
+  font-size: 13px;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stats {
+  display: flex;
+  gap: 20px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.statValue {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.statLabel {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.apiKey {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: monospace;
+  background: var(--bg-tertiary);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.link {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.settingsLink {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.settingsLink:hover {
+  color: var(--text-primary);
+}

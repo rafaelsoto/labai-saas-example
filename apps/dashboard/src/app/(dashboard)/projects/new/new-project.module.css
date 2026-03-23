@@ -1,0 +1,20 @@
+.wrapper { max-width: 560px; }
+.title { font-size: 24px; font-weight: 700; margin-bottom: 24px; }
+.card {}
+.form { display: flex; flex-direction: column; gap: 16px; }
+.error { color: var(--error); font-size: 13px; }
+.buttons { display: flex; gap: 10px; justify-content: flex-end; }
+.modal { display: flex; flex-direction: column; gap: 16px; }
+.modalText { font-size: 14px; color: var(--text-secondary); }
+.snippet {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  font-size: 12px;
+  color: var(--accent);
+  overflow-x: auto;
+  white-space: pre;
+}
+.copyBtn { width: 100%; }
+.doneBtn { width: 100%; }

@@ -1,0 +1,12 @@
+.title { font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 4px; }
+.subtitle { font-size: 14px; color: var(--text-secondary); text-align: center; margin-bottom: 28px; }
+.form { display: flex; flex-direction: column; gap: 16px; }
+.error { color: var(--error); font-size: 13px; background: var(--error-light); padding: 10px 14px; border-radius: var(--radius-sm); }
+.submitBtn { width: 100%; }
+.success { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.successIcon { font-size: 48px; }
+.success h2 { font-size: 20px; font-weight: 600; }
+.success p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+.backLink { color: var(--accent); font-size: 14px; }
+.backLink2 { text-align: center; margin-top: 20px; }
+.link { color: var(--accent); font-size: 13px; }

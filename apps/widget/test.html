@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FeedbackFlow Widget Test</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a0f;
+      color: #f0f0f5;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    h1 { color: #6366f1; }
+    p { color: #8b8ba7; line-height: 1.7; }
+    .card {
+      background: #13131a;
+      border: 1px solid #2a2a3a;
+      border-radius: 12px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+    code {
+      background: #1a1a24;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #6366f1;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <h1>FeedbackFlow Widget — Página de Teste</h1>
+
+  <div class="card">
+    <h2>Como usar</h2>
+    <p>O widget aparece no canto da tela. Clique no botão 💬 para abrir o formulário de feedback.</p>
+    <p>Configure seu <code>data-api-key</code> com a chave de um projeto criado no dashboard.</p>
+  </div>
+
+  <div class="card">
+    <h2>Conteúdo de exemplo</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+
+  <!--
+    Substitua YOUR_API_KEY_HERE pela api_key de um projeto criado no dashboard.
+    Você pode encontrá-la em: Dashboard > Projetos > Seu Projeto > Configurações
+  -->
+  <script
+    src="http://localhost:3333/api/widget/embed.js"
+    data-api-key="YOUR_API_KEY_HERE"
+    defer>
+  </script>
+</body>
+</html>

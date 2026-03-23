@@ -1,0 +1,67 @@
+.topbar {
+  height: 60px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 220px;
+  z-index: 50;
+}
+
+.left {}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.notification {
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  background: var(--error);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 999px;
+  min-width: 16px;
+  text-align: center;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userName {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}

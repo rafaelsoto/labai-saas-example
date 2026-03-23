@@ -1,0 +1,71 @@
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.passwordWrapper {
+  position: relative;
+}
+
+.eyeBtn {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--text-muted);
+  padding: 0;
+}
+
+.error {
+  color: var(--error);
+  font-size: 13px;
+  background: var(--error-light);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+}
+
+.submitBtn {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.link {
+  color: var(--accent);
+  font-size: 13px;
+  transition: opacity 0.15s;
+}
+
+.link:hover {
+  opacity: 0.8;
+}
+
+.divider {
+  color: var(--text-muted);
+  font-size: 12px;
+}

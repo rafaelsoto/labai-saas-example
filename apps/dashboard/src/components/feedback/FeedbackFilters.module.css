@@ -1,0 +1,40 @@
+.wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 16px;
+}
+
+.projectSelect { min-width: 180px; }
+.search { flex: 1; min-width: 180px; }
+.date { width: 150px; }
+
+.ratingFilter {
+  display: flex;
+  gap: 6px;
+}
+
+.ratingBadge {
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-tertiary);
+  color: var(--warning);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.ratingBadge:hover {
+  border-color: var(--warning);
+}
+
+.active {
+  background: var(--warning-light) !important;
+  border-color: var(--warning) !important;
+}

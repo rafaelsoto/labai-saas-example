@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:16
+    container_name: feedbackflow_db
+    environment:
+      POSTGRES_DB: feedbackflow
+      POSTGRES_USER: feedbackflow
+      POSTGRES_PASSWORD: secret
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:

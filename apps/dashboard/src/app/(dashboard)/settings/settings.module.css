@@ -1,0 +1,11 @@
+.wrapper { max-width: 560px; }
+.title { font-size: 24px; font-weight: 700; margin-bottom: 24px; }
+.section { margin-bottom: 16px; }
+.sectionTitle { font-size: 16px; font-weight: 600; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.form { display: flex; flex-direction: column; gap: 14px; }
+.error { color: var(--error); font-size: 13px; background: var(--error-light); padding: 8px 12px; border-radius: var(--radius-sm); }
+.success { color: var(--success); font-size: 13px; background: var(--success-light); padding: 8px 12px; border-radius: var(--radius-sm); }
+.planInfo { display: flex; align-items: flex-start; gap: 16px; }
+.planBadge { font-size: 13px; padding: 4px 12px; text-transform: uppercase; }
+.planDetails { display: flex; flex-direction: column; gap: 4px; }
+.planDetails p { font-size: 13px; color: var(--text-secondary); }

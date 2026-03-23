@@ -1,0 +1,82 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.kpiCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.kpiLabel {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.kpiValue {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.kpiTrend {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.trendUp { color: var(--success); }
+.trendDown { color: var(--error); }
+
+.chartsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.chartTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.emptyIcon { font-size: 48px; }
+
+.emptyState h3 { font-size: 18px; font-weight: 600; }
+
+.emptyState p { color: var(--text-secondary); font-size: 14px; }
+
+@media (max-width: 1024px) {
+  .kpiGrid { grid-template-columns: repeat(2, 1fr); }
+  .chartsGrid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .kpiGrid { grid-template-columns: 1fr; }
+}

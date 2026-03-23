@@ -1,0 +1,13 @@
+.wrapper { display: flex; flex-direction: column; gap: 6px; }
+.label { font-size: 13px; font-weight: 500; color: var(--text-secondary); }
+.select {
+  padding: 10px 14px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+}
+.select:focus { border-color: var(--accent); }

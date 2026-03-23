@@ -1,0 +1,20 @@
+.wrapper { max-width: 800px; }
+.header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.title { font-size: 22px; font-weight: 700; }
+.section { margin-bottom: 16px; }
+.sectionTitle { font-size: 16px; font-weight: 600; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.fields { display: flex; flex-direction: column; gap: 14px; }
+.label { font-size: 13px; font-weight: 500; color: var(--text-secondary); display: block; margin-bottom: 6px; }
+.colorField { display: flex; align-items: center; gap: 12px; }
+.colorPicker { width: 40px; height: 36px; border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; background: none; padding: 2px; }
+.positions { display: flex; flex-wrap: wrap; gap: 6px; }
+.posBtn { padding: 6px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--bg-tertiary); color: var(--text-secondary); font-size: 11px; cursor: pointer; transition: all 0.15s; }
+.posBtn:hover { border-color: var(--accent); }
+.posActive { background: var(--accent-light) !important; border-color: var(--accent) !important; color: var(--accent) !important; }
+.toggle { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px; }
+.widgetConfig { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.snippet { background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px; font-size: 12px; color: var(--accent); overflow-x: auto; white-space: pre; margin-bottom: 10px; }
+.saveRow { display: flex; justify-content: flex-end; margin-bottom: 16px; }
+.dangerZone { border-color: var(--error); }
+.dangerTitle { font-size: 16px; font-weight: 600; color: var(--error); margin-bottom: 8px; }
+.dangerDesc { font-size: 13px; color: var(--text-secondary); margin-bottom: 16px; }
